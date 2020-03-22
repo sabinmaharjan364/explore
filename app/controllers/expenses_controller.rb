@@ -1,4 +1,5 @@
 class ExpensesController < ApplicationController
+  layout 'master'
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
 
   # GET /expenses

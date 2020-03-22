@@ -1,6 +1,8 @@
 <h1>Editing Category</h1>
+<%= form_for(@category, url: category_path(@category), local: true) do |form| %>
 
-<%= render 'form', category: @category %>
+<%= render 'form', category: @category, form: form %>
+<% end %>
 
-<%= link_to 'Show', @category %> |
+<%= link_to 'Show', category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
