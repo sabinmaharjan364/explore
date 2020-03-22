@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  layout 'master'
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   # GET /categories
@@ -25,7 +26,7 @@ class CategoriesController < ApplicationController
   # POST /categories.json
   def create
     @category = Category.new(category_params)
-
+  
     respond_to do |format|
       if @category.save
         format.html { redirect_to @category, notice: 'Category was successfully created.' }
@@ -69,6 +70,7 @@ class CategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def category_params
-      params.fetch(:category, {})
+      params.require(:category).permit(:title, :type)
+      
     end
 end

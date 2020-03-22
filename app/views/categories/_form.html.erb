@@ -11,6 +11,18 @@
     </div>
   <% end %>
 
+
+  <div class="field">
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+</div>
+
+
+<div class="field">
+  <%= form.label :Category %>
+    <%= form.select :type, ["ExpenseCategory","IncomeCategory"]%>
+</div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
