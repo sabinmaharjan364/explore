@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   resources :expenses
   resources :incomes
-  
+
   devise_for :users
   resources :comments
   get 'pages/info'
   resources :ideas
-  root to: redirect('/ideas')
+
+
+  get 'dashboard', to: 'dashboards#index'
+  root to: redirect('/dashboard')
 
   resources :categories do 
     # resources :expense_categories, controller: :expense_categories, type: 'Expense'

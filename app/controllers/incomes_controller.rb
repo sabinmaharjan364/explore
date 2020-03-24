@@ -1,11 +1,11 @@
-class IncomesController < ApplicationController
+class IncomesController < BaseController
   layout 'master'
   before_action :set_income, only: [:show, :edit, :update, :destroy]
 
   # GET /incomes
   # GET /incomes.json
   def index
-    @incomes = Income.all
+    @incomes = Income.all.page(params[:page]).per(10)
   end
 
   # GET /incomes/1
@@ -25,7 +25,7 @@ class IncomesController < ApplicationController
   # POST /incomes
   # POST /incomes.json
   def create
-    byebug
+    
     @income = Income.new(income_params)
     
     respond_to do |format|
@@ -71,7 +71,7 @@ class IncomesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def income_params
-      params.require(:income).permit(:title, :description,  :income_category_id)
+      params.require(:income).permit(:title, :description,  :category_id)
     end
 end
   

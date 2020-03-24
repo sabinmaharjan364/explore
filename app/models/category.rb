@@ -5,4 +5,5 @@ class Category < ApplicationRecord
     scope :income_categories, ->{where type: 'Income'}
     scope :expense_categories, ->{where type: 'Expense'}
     validates :title, :type, presence: true
+  
 end

@@ -1,11 +1,11 @@
-class CategoriesController < ApplicationController
+class CategoriesController < BaseController
   layout 'master'
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.all.page(params[:page]).per(10)
   end
 
   # GET /categories/1

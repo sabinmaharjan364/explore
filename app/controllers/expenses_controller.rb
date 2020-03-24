@@ -1,11 +1,12 @@
-class ExpensesController < ApplicationController
+class ExpensesController < BaseController
   layout 'master'
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
 
   # GET /expenses
   # GET /expenses.json
   def index
-    @expenses = Expense.all
+    @expenses = Expense.all.page(params[:page]).per(10)
+
   end
 
   # GET /expenses/1

@@ -10,19 +10,34 @@
     </div>
   <% end %>
 
-
-  <div class="field">
-  <%= form.label :title %>
-  <%= form.text_field :title %>
-</div>
-
-
-<div class="field">
-  <%= form.label :Category %>
-    <%= form.select :type, ["ExpenseCategory","IncomeCategory"]%>
-</div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="card card-warning">
+  <div class="card-header">
+    <h3 class="card-title">Quick Example</h3>
   </div>
+  <!-- /.card-header -->
+  <!-- form start -->
+  <form role="form">
+    <div class="card-body">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Title</label>
+        <%= form.text_field :title ,class:"form-control" %>
+      </div>
+      
+      
+      <div class="form-check">
+        <%= form.select :type, ["ExpenseCategory","IncomeCategory"],class:"form-control"%>
+      </div>
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+    
+    <%= form.submit %>
+
+    </div>
+  </form>
+</div>
+<!-- /.card -->
+
+
 
