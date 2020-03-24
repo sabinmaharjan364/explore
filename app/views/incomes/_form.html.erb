@@ -10,12 +10,19 @@
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
-
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity %>
+  </div>
+  <div class="field">
+  <%= form.label :Amount %>
+  <%= form.number_field :amount ,step: :any %>
+  </div>
   <div class="field">
     <%= form.label :income_category_id %>
     <%= form.collection_select :income_category_id, IncomeCategory.all, :id, :title %>
   </div>
-
+  <%= form.hidden_field :user_id, value: @currentUser %>
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -16,6 +16,7 @@ class IncomesController < BaseController
   # GET /incomes/new
   def new
     @income = Income.new
+    @currentUser = current_user.id
   end
 
   # GET /incomes/1/edit
@@ -25,7 +26,7 @@ class IncomesController < BaseController
   # POST /incomes
   # POST /incomes.json
   def create
-    
+    byebug
     @income = Income.new(income_params)
     
     respond_to do |format|
@@ -71,7 +72,7 @@ class IncomesController < BaseController
 
     # Only allow a list of trusted parameters through.
     def income_params
-      params.require(:income).permit(:title, :description,  :category_id)
+      params.require(:income).permit(:title, :description, :quantity, :amount, :user_id, :category_id)
     end
 end
   

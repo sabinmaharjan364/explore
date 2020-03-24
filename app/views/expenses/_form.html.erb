@@ -20,6 +20,16 @@
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity %>
+  </div>
+  <div class="field">
+  <%= form.label :Amount %>
+  <%= form.number_field :amount ,step: :any %>
+  </div>
+  <%= form.hidden_field :user_id, value: @currentUser %>
+
 
   <div class="field">
     <%= form.label :category_id %>

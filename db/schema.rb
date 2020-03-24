@@ -33,10 +33,14 @@ ActiveRecord::Schema.define(version: 2020_03_21_120346) do
   create_table "expenses", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.integer "quantity"
+    t.float "amount"
+    t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_expenses_on_category_id"
+    t.index ["user_id"], name: "index_expenses_on_user_id"
   end
 
   create_table "ideas", force: :cascade do |t|
@@ -50,10 +54,14 @@ ActiveRecord::Schema.define(version: 2020_03_21_120346) do
   create_table "incomes", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.integer "quantity"
+    t.float "amount"
     t.bigint "category_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_incomes_on_category_id"
+    t.index ["user_id"], name: "index_incomes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -62,6 +70,13 @@ ActiveRecord::Schema.define(version: 2020_03_21_120346) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -69,5 +84,7 @@ ActiveRecord::Schema.define(version: 2020_03_21_120346) do
   end
 
   add_foreign_key "expenses", "categories"
+  add_foreign_key "expenses", "users"
   add_foreign_key "incomes", "categories"
+  add_foreign_key "incomes", "users"
 end

@@ -3,6 +3,9 @@ class CreateIncomes < ActiveRecord::Migration[6.0]
     create_table :incomes do |t|
       t.string :title
       t.text :description
+      t.integer :quantity
+      t.float :amount
+      t.references :user, null: false, foreign_key: true
       t.references :category, null: false, foreign_key: true
 
       t.timestamps
